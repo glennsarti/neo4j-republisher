@@ -121,6 +121,7 @@
     <None Include="StoredProcedures.xml">
       <SubType>Designer</SubType>
     </None>
+    <None Include="StoredProcedures-example.xml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

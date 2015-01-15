@@ -1,0 +1,36 @@
+<storedprocedures>
+  <!-- Procedure names should only have text characters i.e. a -> z.  It just makes it easier -->
+  <storedprocedure name="getstuff">
+    <!-- You can have multiple statements per procedure.  All statements execute in the same transaction -->  
+    <statement>
+      <cypher>MATCH (n:Stuff { floornumber: {floornumber}}) RETURN Count(n)</cypher>
+      <param>floornumber</param> <!-- Any parameters used in the query must be specified here.  The definition of the parameter is below -->
+    </statement>
+
+    <statement>
+      <cypher>MATCH (n:Person { userid: {username}}) RETURN n</cypher>
+      <param>username</param>
+    </statement>
+    
+    <allowsid>[ Enter the SID of a group allowed to execute and list this proc ]</allowsid>
+    <allowsid>[ Enter the SID of a group allowed to execute and list this proc ]</allowsid>
+    <allowsid>[ Enter the SID of a group allowed to execute and list this proc ]</allowsid>
+
+
+    <param>
+      <name>floornumber</name>
+      <type>int</type>  <!-- Default is string.  Valid types are string and int -->
+      <regex>[\d]+</regex> <!-- Optional validation regex -->
+    </param>
+
+    <internalparam>username</internalparam> <!-- Internal parameters are created at request time and can not be set by the user requestin the procedure -->
+  </storedprocedure>
+
+  <storedprocedure name="me">
+    <statement>
+      <cypher>MATCH (n:Person { userid: {username}}) RETURN n</cypher>
+      <param>username</param>
+    </statement>
+    <internalparam>username</internalparam>
+  </storedprocedure>
+</storedprocedures>
